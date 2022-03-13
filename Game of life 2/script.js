@@ -9,7 +9,7 @@ const lakeArr = []
 const volcanoArr = []
 
 
-function generator(matrixSize, grassCount, grassEaterCount, predatorCount, bombCount){
+function generator(matrixSize, grassCount, grassEaterCount, predatorCount){
     for (let i = 0; i < matrixSize; i++) {
         matrix[i] = []
         for (let o = 0; o < matrixSize; o++) {
@@ -234,7 +234,7 @@ function generator(matrixSize, grassCount, grassEaterCount, predatorCount, bombC
 
 function setup() {
     frameRate(10)
-    generator(50, 40, 20, 30, 1)
+    generator(50, 40, 20, 30)
     createCanvas(side * matrix.length, side * matrix[0].length)
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
