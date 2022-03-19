@@ -1,5 +1,7 @@
 const matrix = []
 
+// import { Grass } from "Grass";
+import {Predator} from './Predator.js';
 console.log(matrix);
 const side = 15
 const grassArr = []

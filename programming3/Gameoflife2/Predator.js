@@ -1,4 +1,4 @@
-class Predator extends LivingCreature{
+export default class Predator extends LivingCreature{
     constructor(x, y) {
         super(x, y)
         this.energy = 50

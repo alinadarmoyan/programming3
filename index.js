@@ -39,7 +39,8 @@
 // app.listen(3000, function(){
 //    console.log("Example is running on port 3000");
 // });
- 
+
+
 var express = require("express");
 var app = express();
 
@@ -52,3 +53,20 @@ app.get("/", function(req, res){
 app.listen(3000, function(){
    console.log("Example is running on port 3000");
 });
+
+// var fs = require('fs');
+// var obj = {
+//    "first_name":"Vardan",
+//    "last_name":"Hovsepyan",
+//    "age":13,
+//    "tumo_student":true
+// }
+// const myJSON = JSON.stringify(obj);
+
+// function main() {
+//    fs.writeFileSync("obj.json", myJSON);
+//    var text = fs.readFileSync("obj.json").toString();
+//    console.log(myJSON == text);
+//    console.log(text);
+// }
+// main();
