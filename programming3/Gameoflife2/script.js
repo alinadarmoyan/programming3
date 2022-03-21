@@ -1,7 +1,11 @@
 const matrix = []
 
-// import { Grass } from "Grass";
-import {Predator} from './Predator.js';
+import LivingCreature from './LivingCreature.js';
+import Grass from "./Grass.js";
+import GrassEater from "GrassEater.js";
+import Predator from 'Predator.js';
+import Lake from "Lake.js";
+import Volcano from "Volcano.js";
 console.log(matrix);
 const side = 15
 const grassArr = []

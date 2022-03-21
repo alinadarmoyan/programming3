@@ -1,8 +1,8 @@
-class Grass extends LivingCreature {
+export default class Grass extends LivingCreature {
 
     mul() {
         let found = this.chooseCell(0)
-        let exact = random(found)
+        let exact = Math.random(found)
         if (exact && this.multiplay > 3) {
             let x = exact[0]
             let y = exact[1]

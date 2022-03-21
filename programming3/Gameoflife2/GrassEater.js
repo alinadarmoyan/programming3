@@ -1,4 +1,4 @@
-class GrassEater extends LivingCreature{
+export default class GrassEater extends LivingCreature{
     constructor(x, y) {
         super(x, y)
         this.energy = 20
@@ -25,7 +25,7 @@ class GrassEater extends LivingCreature{
 
     mul() {
         let found = this.chooseCell(0)
-        let exact = random(found)
+        let exact = Math.random(found)
         if (exact && this.energy >= 40) {
             let x = exact[0]
             let y = exact[1]
@@ -40,7 +40,7 @@ class GrassEater extends LivingCreature{
 
     eat() {
         let found = this.chooseCell(1)
-        let exact = random(found)
+        let exact = Math.random(found)
         if (exact) {
             this.energy += 2
             let x = exact[0]
@@ -66,7 +66,7 @@ class GrassEater extends LivingCreature{
 
     move() {
         let found = this.chooseCell(0)
-        let exact = random(found)
+        let exact = Math.random(found)
         if (exact) {
             let x = exact[0]
             let y = exact[1]

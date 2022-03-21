@@ -1,4 +1,4 @@
-class Volcano extends LivingCreature{
+export default class Volcano extends LivingCreature{
     constructor(x, y) {
         super(x, y)
         this.multiplay = 0

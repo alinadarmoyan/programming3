@@ -1,4 +1,4 @@
-class LivingCreature {
+export default class LivingCreature {
     constructor(x, y) {
         this.x = x;
         this.y = y;

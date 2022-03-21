@@ -25,7 +25,7 @@ export default class Predator extends LivingCreature{
 
     mul() {
         let found = this.chooseCell(0)
-        let exact = random(found)
+        let exact = Math.random(found)
         if (exact && this.energy >= 100) {
             let x = exact[0]
             let y = exact[1]
@@ -40,7 +40,7 @@ export default class Predator extends LivingCreature{
 
     eat() {
         let found = this.chooseCell(2)
-        let exact = random(found)
+        let exact = Math.random(found)
         if (exact) {
             this.energy += 5
             let x = exact[0]
@@ -66,7 +66,7 @@ export default class Predator extends LivingCreature{
 
     move() {
         let found = this.chooseCell(0)
-        let exact = random(found)
+        let exact = Math.random(found)
         if (exact) {
             let x = exact[0]
             let y = exact[1]
