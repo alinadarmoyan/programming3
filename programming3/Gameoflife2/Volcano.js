@@ -1,4 +1,6 @@
-export default class Volcano extends LivingCreature{
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Volcano extends LivingCreature{
     constructor(x, y) {
         super(x, y)
         this.multiplay = 0
@@ -66,7 +68,7 @@ export default class Volcano extends LivingCreature{
 
     mul() {
         let found = this.chooseCell(0, 1, 2, 3, 8, 6)
-        let exact = random(found)
+        let exact = found[Math.floor(Math.random() * emptyCells.length)]
         if (exact && this.multiplay > 15) {
             let x = exact[0]
             let y = exact[1]

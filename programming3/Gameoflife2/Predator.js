@@ -1,4 +1,6 @@
-export default class Predator extends LivingCreature{
+let LivingCreature = require('./LivingCreature')
+
+module.exports = class Predator extends LivingCreature{
     constructor(x, y) {
         super(x, y)
         this.energy = 50
@@ -23,78 +25,70 @@ export default class Predator extends LivingCreature{
         return super.chooseCell(char)
     }
 
-    mul() {
-        let found = this.chooseCell(0)
-        let exact = Math.random(found)
-        if (exact && this.energy >= 100) {
-            let x = exact[0]
-            let y = exact[1]
-
-            let eater = new Predator(x, y)
-            matrix[y][x] = 3
-            predatorArr.push(eater)
-
-            this.energy = 50
-        }
-    }
-
     eat() {
-        let found = this.chooseCell(2)
-        let exact = Math.random(found)
-        if (exact) {
-            this.energy += 5
-            let x = exact[0]
-            let y = exact[1]
-            for (let i = 0; i < grassEaterArr.length; i++) {
-                if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
-                    grassEaterArr.splice(i, 1)
-                }
-            }
-            matrix[y][x] = 3
-            matrix[this.y][this.x] = 0
+		var grassCells = super.chooseCell(2);
+		var newCell = grassCells[Math.floor(Math.random() * grassCells.length)]
 
-            this.x = x
-            this.y = y
-            if (this.energy >= 100) {
-                this.mul()
-            }
-        }
-        else {
-            this.move()
-        }
-    }
+		if (newCell) {
+
+			var newX = newCell[0];
+			var newY = newCell[1];
+
+			matrix[newY][newX] = matrix[this.y][this.x];
+			matrix[this.y][this.x] = 0;
+
+			this.x = newX;
+			this.y = newY;
+			this.energy += 5;
+
+			if (this.energy >= 100) {
+				console.log(this.energy);
+				this.mul();
+			}
+
+		}
+		else {
+			this.move();
+		}
+	}
 
     move() {
-        let found = this.chooseCell(0)
-        let exact = Math.random(found)
-        if (exact) {
-            let x = exact[0]
-            let y = exact[1]
-            matrix[y][x] = 3
-            matrix[this.y][this.x] = 0
+		var emptyCells = super.chooseCell(0);
+		var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
-            this.x = x
-            this.y = y
-            this.energy --
-            if (this.energy <= 0) {
-                this.die()
-            }
-        }
-        else {
-            this.energy --
-            if (this.energy <= 0) {
-                this.die()
-            }
-        }
-    }
+		if (newCell) {
+			var newX = newCell[0];
+			var newY = newCell[1];
+
+			matrix[newY][newX] = matrix[this.y][this.x];
+			matrix[this.y][this.x] = 0;
+
+			this.x = newX;
+			this.y = newY
+		}
+
+		this.energy--;
+		if (this.energy <= 0) {
+			this.die();
+		}
+
+
+	}
+
+    mul() {
+		var emptyCells = super.chooseCell(0);
+		var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+
+		if (newCell) {
+			var newX = newCell[0];
+			var newY = newCell[1];
+            var Predator = new Predator(newX, newY)
+            predatorArr.push(Predator)
+			this.energy = 20;
+		}
+	}
 
     die() {
-        for (let i = 0; i < predatorArr.length; i++) {
-            if (predatorArr[i].x == this.x && predatorArr[i].y == this.y) {
-                predatorArr.splice(i, 1)
-            }
-        }
         matrix[this.y][this.x] = 0
     }
 }
-
