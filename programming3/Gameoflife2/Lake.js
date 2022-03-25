@@ -1,6 +1,6 @@
-let LivingCreature = require('./LivingCreature')
+import LivingCreature from './LivingCreature';
 
-module.exports = class Lake extends LivingCreature{
+export default class Lake extends LivingCreature{
     constructor(x, y) {
         super(x, y)
         this.multiplay = 0

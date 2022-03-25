@@ -1,15 +1,17 @@
 var express = require('express');
 var app = express();
-var server = require('http').Server(app);
+var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-var fs = require("fs");
+var fs = require("fs")
 
 app.use(express.static("."));
 
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(3000);
+server.listen(3000, function(){
+    console.log("Example is running on port 3000");
+ });
 
 const matrix = []
 
@@ -239,10 +241,7 @@ function generator(matrixSize, grassCount, grassEaterCount, predatorCount){
 
 generator(50, 40, 20, 30)
 
-socket.on("updateMatrix",function (matrix) {
-    io.sockets.emit('send matrix', matrix)
-    console.log("Mattttttriiiiiiiixx");
-})
+io.sockets.emit('send matrix', matrix)
 
 
 
@@ -253,11 +252,11 @@ const predatorArr = []
 const lakeArr = []
 const volcanoArr = []
 
-let Grass = require("./Grass")
-let GrassEater = require("./GrassEater")
-let Predator =  require('./Predator');
-let Lake = require("./Lake");
-let Volcano = require("./Volcano");
+import Grass from "./Grass";
+import GrassEater from "./GrassEater";
+import Predator from './Predator';
+import Lake from "./Lake";
+import Volcano from "./Volcano";
 
 function createObject(matrix) {
     for (var y = 0; y < matrix.length; y++) {
@@ -285,10 +284,7 @@ function createObject(matrix) {
     //չմոռանաս , որ emit-ը տվյալ ուղարկողն է, իսկ on-ը ստացողը և կատարողը
     //այս դեպքում 2-րդ արգումենտը տվյալն է
     //io.sockets.emit('send matrix', matrix)
-    socket.on("updateMatrix",function (matrix) {
-        io.sockets.emit('send matrix', matrix)
-        console.log("Mattttttriiiiiiiixx");
-    })
+    io.sockets.emit('send matrix', matrix)
 
 }
 
@@ -310,10 +306,7 @@ function game() {
     }
     //այո, դու ճիշտ ես տեսնում, կրկին և կրկին
     //io.sockets.emit("send matrix", matrix);
-    socket.on("updateMatrix",function (matrix) {
-        io.sockets.emit('send matrix', matrix)
-        console.log("Mattttttriiiiiiiixx");
-    })
+    io.sockets.emit('send matrix', matrix)
 }
 
 setInterval(game, 1000)

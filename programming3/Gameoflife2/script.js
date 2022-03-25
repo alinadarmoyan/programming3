@@ -6,7 +6,7 @@ const side = 15
 // }
 
 function main() {
-    var socket = io()
+    const socket = io()
     function draw() {
     
         for (let y = 0; y < matrix.length; y++) {
